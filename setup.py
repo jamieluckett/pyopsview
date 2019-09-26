@@ -3,34 +3,48 @@
 
 from setuptools import setup, find_packages
 
-PYOPSVIEW_VERSION = '5.3.3'
 
-with open('README.md', 'r') as fno:
-    LONG_DESCRIPTION = fno.read()
+def file_read(filename):
+    with open(filename, 'r') as f:
+        return f.read().strip()
 
-with open('requirements.txt', 'r') as fno:
-    PYOPSVIEW_REQUIRES = fno.readlines()
+
+def file_readlines(filename):
+    with open(filename, 'r') as f:
+        return f.readlines()
+
 
 package = {
     'name': 'pyopsview',
-    'version': PYOPSVIEW_VERSION,
+    'version': file_read('VERSION'),
     'description': 'Python client for the Opsview API',
-    'long_description': LONG_DESCRIPTION,
+    'long_description': file_read('README.md'),
+    'long_description_content_type': 'text/markdown',
 
+    'classifiers': [
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+    ],
+
+    'keywords': 'pyopsview opsview api',
     'maintainer': 'Joshua Griffiths',
     'maintainer_email': 'joshua.griffiths@opsview.com',
-    'url': 'https://github.com/jpgxs/pyopsview',
-    'download_url': 'https://github.com/jpgxs/pyopsview',
+    'url': 'https://github.com/opsview/pyopsview',
+    'download_url': 'https://github.com/opsview/pyopsview',
+    'project_urls': {
+        'Bug Reports': 'https://github.com/opsview/pyopsview/issues',
+        'Source Code': 'https://github.com/opsview/pyopsview',
+        'Opsview Homepage': 'https://www.opsview.com'
+    },
 
     'packages': find_packages(),
     'package_dir': {
         'pyopsview': 'pyopsview',
     },
     'package_data': {
-        'pyopsview': ['README.md', 'schemas/*.json'],
+        'pyopsview': ['VERSION', 'README.md', 'schemas/*.json'],
     },
     'include_package_data': True,
-    'install_requires': PYOPSVIEW_REQUIRES,
+    'install_requires': file_readlines('requirements.txt'),
 }
 
 setup(**package)

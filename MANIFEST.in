@@ -1,6 +1,8 @@
 include README.md
 include LICENSE
 include requirements.txt
+include VERSION
+
 recursive-include pyopsview/v2/schemas *.json
 
 global-exclude *.pyc
