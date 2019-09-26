@@ -2,7 +2,7 @@
 
 **Python REST API Client for Opsview!**
 
-![Opsview Logo](https://raw.githubusercontent.com/jpgxs/pyopsview/master/opsview.png)
+![Opsview Logo](images/opsview.png)
 
 ## Installation
 
